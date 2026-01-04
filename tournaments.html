@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournaments | Neon Gaming</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="main-header">
+    <nav>
+        <div class="logo">PLAY<span>2</span>GLORY</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tournaments.html" class="active">Tournaments</a></li>
+            <li><a href="past-events.html">Past Events</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="page-wrapper">
+    <h1 class="section-title">ACTIVE OPERATIONS</h1>
+    <span class="section-subtitle">SELECT YOUR BATTLEGROUND</span>
+
+    <div class="tournament-grid">
+        <div class="glass-card">
+            <div class="t-card-header">
+                <span class="status-live t-status">LIVE NOW</span>
+                <span style="color: #666;">PC / STEAM</span>
+            </div>
+            <h3 class="t-title">SUMMER CLASH '26</h3>
+            <div class="t-meta">
+                <span>Slots: 12/64 Teams</span>
+                <span>Region: NA East</span>
+            </div>
+            <div class="t-prize">$5,000</div>
+            <a href="tournaments/summer-clash.html" class="neon-btn" style="margin-top: 20px; width: 100%; text-align: center;">View Details</a>
+        </div>
+
+        <div class="glass-card">
+            <div class="t-card-header">
+                <span class="status-open t-status">REGISTRATION OPEN</span>
+                <span style="color: #666;">PS5 / CROSSPLAY</span>
+            </div>
+            <h3 class="t-title">PRO LEAGUE V2</h3>
+            <div class="t-meta">
+                <span>Slots: 0/32 Teams</span>
+                <span>Region: Global</span>
+            </div>
+            <div class="t-prize">$10,000</div>
+            <a href="#" class="neon-btn" style="margin-top: 20px; width: 100%; text-align: center;">View Details</a>
+        </div>
+
+        <div class="glass-card">
+            <div class="t-card-header">
+                <span class="status-open t-status" style="border-color: yellow; color: yellow; background: rgba(255,255,0,0.1);">COMING SOON</span>
+                <span style="color: #666;">MOBILE</span>
+            </div>
+            <h3 class="t-title">MOBILE ROYALE</h3>
+            <div class="t-meta">
+                <span>Slots: TBD</span>
+                <span>Region: Asia</span>
+            </div>
+            <div class="t-prize">$2,500</div>
+            <a href="#" class="neon-btn" style="margin-top: 20px; width: 100%; text-align: center; opacity: 0.5; cursor: not-allowed;">Locked</a>
+        </div>
+    </div>
+</div>
+
+<div class="wire-container">
+    <svg class="wire-svg" preserveAspectRatio="none" viewBox="0 0 100 1000">
+        <path id="wire-path" d="M95,0 Q98,200 80,400 T60,600 T80,800 Q90,950 50,1000" fill="none" stroke="#222" stroke-width="4" vector-effect="non-scaling-stroke"/>
+        <path id="electric-glow" d="M95,0 Q98,200 80,400 T60,600 T80,800 Q90,950 50,1000" fill="none" stroke="#39FF14" stroke-width="4" stroke-dasharray="0, 10000" vector-effect="non-scaling-stroke"/>
+    </svg>
+</div>
+
+<footer class="system-footer">
+    <div class="dash-left"><span class="blink-light light-green"></span> GRID_STATUS: ONLINE</div>
+    <div class="usb-dock"><div class="usb-slot"></div></div>
+    <div class="dash-right">AWAITING_INPUT</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

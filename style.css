@@ -1,0 +1,229 @@
+/* --- GLOBAL VARIABLES & RESET --- */
+:root {
+    --bg-deep: #050505;
+    --neon-green: #39FF14;
+    --neon-dim: rgba(57, 255, 20, 0.1);
+    --glass-panel: rgba(20, 20, 20, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-main: #ffffff;
+    --text-mute: #888888;
+    --font-head: 'Orbitron', sans-serif; /* Tech Header Font */
+    --font-body: 'Rajdhani', sans-serif; /* Tech Body Font */
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    margin: 0;
+    overflow-x: hidden;
+    position: relative;
+    padding-bottom: 220px; /* Space for the Massive Footer */
+}
+
+/* --- BACKGROUND: CYBER GRID (CSS ONLY - NO IMAGES) --- */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Creates a cool tech grid pattern */
+    background-image:
+            linear-gradient(var(--neon-dim) 1px, transparent 1px),
+            linear-gradient(90deg, var(--neon-dim) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: center center;
+    z-index: -2;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 100%); /* Fades edges */
+}
+
+/* --- 1. STICKY HEADER (PREMIUM LOOK) --- */
+.main-header {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 80px;
+    background: rgba(5, 5, 5, 0.85); /* Dark Glass */
+    backdrop-filter: blur(15px); /* Blurs background behind it */
+    border-bottom: 1px solid var(--neon-green);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+}
+
+nav {
+    width: 100%; max-width: 1400px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 40px;
+}
+
+.logo {
+    font-family: var(--font-head);
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: white;
+}
+.logo span { color: var(--neon-green); text-shadow: 0 0 15px var(--neon-green); }
+
+nav ul { display: flex; list-style: none; gap: 40px; margin: 0; padding: 0; }
+nav a {
+    color: var(--text-mute);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    transition: 0.3s;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+nav a:hover, nav a.active { color: var(--neon-green); text-shadow: 0 0 8px var(--neon-green); }
+/* Little dot under active link */
+nav a::after {
+    content: ''; position: absolute; bottom: -5px; left: 0; width: 0%; height: 2px;
+    background: var(--neon-green); transition: 0.3s;
+}
+nav a:hover::after { width: 100%; }
+
+/* --- 2. THE SYSTEM FOOTER (ANIMATED DASHBOARD) --- */
+.system-footer {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    height: 200px; /* Tall footer */
+    background: linear-gradient(to top, #0a0a0a, #111);
+    border-top: 2px solid #333;
+    display: flex;
+    justify-content: center; /* Centers the USB port */
+    align-items: flex-end; /* Pushes content to bottom */
+    z-index: 90;
+    box-shadow: 0 -10px 60px rgba(0,0,0,1);
+    overflow: hidden;
+}
+
+/* The "Server Rack" Vents Background */
+.system-footer::before {
+    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(90deg, #1a1a1a 0px, #1a1a1a 2px, transparent 2px, transparent 10px);
+    opacity: 0.2;
+}
+
+/* The USB Port (Center Piece) */
+.usb-dock {
+    width: 120px; height: 60px;
+    background: #151515;
+    border: 2px solid var(--neon-green);
+    border-bottom: none;
+    border-radius: 15px 15px 0 0;
+    position: absolute;
+    bottom: 0; left: 50%; transform: translateX(-50%);
+    box-shadow: 0 0 30px var(--neon-dim);
+    z-index: 100;
+    display: flex; justify-content: center; align-items: center;
+}
+
+/* The Glowing Port Slot */
+.usb-slot {
+    width: 60px; height: 15px;
+    background: #000;
+    border: 1px solid #555;
+    border-radius: 4px;
+    box-shadow: inset 0 0 10px var(--neon-green);
+}
+
+/* Dashboard Decorations (Left and Right) */
+.dash-left, .dash-right {
+    position: absolute; bottom: 20px;
+    font-family: monospace; color: var(--neon-green); font-size: 0.8rem;
+    opacity: 0.7;
+}
+.dash-left { left: 40px; text-align: left; }
+.dash-right { right: 40px; text-align: right; }
+
+/* Blinking Light Animation */
+.blink-light {
+    display: inline-block; width: 10px; height: 10px;
+    background: red; border-radius: 50%;
+    margin-right: 10px;
+    animation: blink 1s infinite;
+    box-shadow: 0 0 5px red;
+}
+.light-green { background: var(--neon-green); box-shadow: 0 0 5px var(--neon-green); animation-duration: 2s; }
+
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+/* --- 3. THE WIRE (Global) --- */
+.wire-container {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 50; overflow: hidden;
+}
+.wire-svg { width: 100%; height: 100%; }
+
+/* --- 4. CONTENT LAYOUTS --- */
+.page-wrapper {
+    position: relative; z-index: 60;
+    padding-top: 140px; padding-bottom: 50px;
+    max-width: 1200px; margin: 0 auto;
+}
+
+/* Titles */
+.section-title {
+    font-family: var(--font-head);
+    font-size: 4rem;
+    text-transform: uppercase;
+    background: linear-gradient(to right, #fff, #888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(255,255,255,0.1);
+}
+.section-subtitle { color: var(--neon-green); letter-spacing: 3px; font-weight: bold; margin-bottom: 60px; display: block; }
+
+/* Cards (Glassmorphism) */
+.glass-card {
+    background: var(--glass-panel);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    transition: 0.4s ease;
+    position: relative; overflow: hidden;
+}
+
+.glass-card:hover {
+    border-color: var(--neon-green);
+    box-shadow: 0 0 40px var(--neon-dim);
+    transform: translateY(-5px);
+}
+
+/* Buttons */
+.neon-btn {
+    display: inline-block; padding: 15px 40px;
+    background: transparent;
+    border: 2px solid var(--neon-green);
+    color: var(--neon-green);
+    font-family: var(--font-head);
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    cursor: pointer;
+    clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%); /* Sci-fi Shape */
+}
+.neon-btn:hover { background: var(--neon-green); color: black; box-shadow: 0 0 30px var(--neon-green); }
+
+/* --- SPECIFIC: TOURNAMENT BUBBLES --- */
+.tournament-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+
+.t-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.t-status { padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
+.status-live { background: rgba(255, 0, 0, 0.2); color: #ff4444; border: 1px solid #ff4444; }
+.status-open { background: rgba(57, 255, 20, 0.1); color: var(--neon-green); border: 1px solid var(--neon-green); }
+
+.t-title { font-size: 1.8rem; margin: 0 0 10px 0; color: white; }
+.t-meta { color: var(--text-mute); font-size: 0.9rem; margin-bottom: 20px; }
+.t-meta span { display: block; margin-bottom: 5px; }
+.t-prize { font-size: 2rem; color: var(--neon-green); font-weight: bold; font-family: var(--font-head); }
