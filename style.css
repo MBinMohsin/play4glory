@@ -226,84 +226,69 @@ nav a:hover::after { width: 100%; }
 .t-title { font-size: 1.8rem; margin: 0 0 10px 0; color: white; }
 .t-meta { color: var(--text-mute); font-size: 0.9rem; margin-bottom: 20px; }
 .t-meta span { display: block; margin-bottom: 5px; }
-
 .t-prize { font-size: 2rem; color: var(--neon-green); font-weight: bold; font-family: var(--font-head); }
-/* --- MOBILE OPTIMIZATION (Paste at the bottom of style.css) --- */
-@media (max-width: 768px) {
-    
-    /* 1. Fix the Header (Stack Logo and Links) */
-    .main-header {
-        height: auto; /* Let it grow to fit links */
-        padding: 15px 0;
-    }
-    
-    nav {
-        flex-direction: column; /* Stack vertically */
-        gap: 15px;
-    }
-    
-    nav ul {
-        gap: 15px;
-        flex-wrap: wrap; /* Allow links to wrap if needed */
-        justify-content: center;
-    }
-    
-    nav a {
-        font-size: 0.9rem; /* Make text slightly smaller */
-    }
 
-    /* 2. Fix the Giant Text */
-    /* !important forces it to override the inline HTML styles */
-    .section-title {
-        font-size: 3rem !important; 
-        line-height: 1.1 !important;
-        text-align: center;
-    }
-    
-    .section-subtitle {
-        text-align: center;
-        display: block;
-    }
-    
-    /* 3. Fix Layout & Spacing */
-    .page-wrapper {
-        padding-top: 160px; /* Push content down below taller header */
-        padding-left: 20px;
-        padding-right: 20px;
-        text-align: center; /* Center everything on mobile */
-    }
-    
-    /* Center the buttons in the hero section */
-    section div[style*="display: flex"] {
-        justify-content: center !important;
-        flex-wrap: wrap;
-    }
 
-    /* 4. Fix the Footer (Hide the complex text clutter) */
-    .system-footer {
-        height: 120px; /* Shorter footer */
-    }
-    
-    .dash-left, .dash-right {
-        display: none; /* Hide the technical text on small screens */
-    }
-    
-    .usb-dock {
-        width: 80px; /* Smaller dock */
-        height: 40px;
-    }
-    
-    .usb-slot {
-        width: 40px;
-        height: 10px;
-    }
+/* --- NEW: AGENT EYE TRACKING --- */
 
-    /* 5. Fix Tournament Cards */
-    .tournament-grid {
-        grid-template-columns: 1fr; /* Force 1 column */
-    }
-    
-    .glass-card {
-        padding: 20px; /* Less padding inside cards */
-    }
+/* 1. Container to hold the face and eyes together */
+.face-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px; /* Limits size so it looks like a portrait ID card */
+    margin: 0 auto;
+    display: block;
+    border-radius: 10px;
+    overflow: hidden; /* Trims corners */
+    box-shadow: 0 0 30px rgba(57, 255, 20, 0.2); /* Green Glow */
+}
+
+.base-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: contrast(1.1) grayscale(20%); /* Slight filter for tech look */
+}
+
+/* 2. The White part of the eye */
+.natural-eye {
+    position: absolute;
+    width: 8.5%;        /* Size tuned for your glasses */
+    height: 0;
+    padding-bottom: 8.5%; /* Makes it a perfect circle */
+    background: #e0e0e0;  /* Slightly off-white for realism */
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.8); /* Shadow from glasses frames */
+    z-index: 10;
+}
+
+/* 3. The Brown/Black Iris */
+.iris {
+    width: 60%;
+    height: 60%;
+    background: #2b1d16; /* Dark Brown (Matches photo) */
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    right: 4px; /* Offset: keeps it rotating around the center */
+    transform: translateY(-50%);
+}
+
+/* 4. The Pupil */
+.pupil {
+    width: 35%;
+    height: 35%;
+    background: black;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 2px var(--neon-green); /* Tiny cyber reflection */
+}
+
+/* The Invisible Rotator */
+.eye-shutter {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
 }
