@@ -292,3 +292,87 @@ nav a:hover::after { width: 100%; }
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
 }
+
+/* --- MOBILE OPTIMIZATION (Paste at the bottom of style.css) --- */
+@media (max-width: 768px) {
+    
+    /* 1. Fix the Header (Stack Logo and Links) */
+    .main-header {
+        height: auto; /* Let it grow to fit links */
+        padding: 15px 0;
+    }
+    
+    nav {
+        flex-direction: column; /* Stack vertically */
+        gap: 15px;
+    }
+    
+    nav ul {
+        gap: 15px;
+        flex-wrap: wrap; /* Allow links to wrap if needed */
+        justify-content: center;
+    }
+    
+    nav a {
+        font-size: 0.9rem; /* Make text slightly smaller */
+    }
+
+    /* 2. Fix the Giant Text */
+    /* !important forces it to override the inline HTML styles */
+    .section-title {
+        font-size: 3rem !important; 
+        line-height: 1.1 !important;
+        text-align: center;
+    }
+    
+    .section-subtitle {
+        text-align: center;
+        display: block;
+    }
+    
+    /* 3. Fix Layout & Spacing */
+    .page-wrapper {
+        padding-top: 160px; /* Push content down below taller header */
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: center; /* Center everything on mobile */
+    }
+    
+    /* Center the buttons in the hero section */
+    section div[style*="display: flex"] {
+        justify-content: center !important;
+        flex-wrap: wrap;
+    }
+
+    /* 4. Fix the Footer (Hide the complex text clutter) */
+    .system-footer {
+        height: 120px; /* Shorter footer */
+    }
+    
+    .dash-left, .dash-right {
+        display: none; /* Hide the technical text on small screens */
+    }
+    
+    .usb-dock {
+        width: 80px; /* Smaller dock */
+        height: 40px;
+    }
+    
+    .usb-slot {
+        width: 40px;
+        height: 10px;
+    }
+
+    /* 5. Fix Tournament Cards */
+    .tournament-grid {
+        grid-template-columns: 1fr; /* Force 1 column */
+    }
+    
+    .glass-card {
+        padding: 20px; /* Less padding inside cards */
+    }
+    
+    /* 6. Fix the "Show on Mobile" Game Toggle */
+    .show-on-mobile { display: block; }
+    .show-on-desktop { display: none !important; }
+}
