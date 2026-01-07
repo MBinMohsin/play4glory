@@ -69,3 +69,25 @@ window.addEventListener('scroll', () => {
 // Init
 window.addEventListener('load', updateWire);
 window.addEventListener('resize', updateWire);
+
+
+// --- EYE TRACKING LOGIC ---
+document.addEventListener('mousemove', (e) => {
+    // Only run if eyes exist on the page
+    const eyes = document.querySelectorAll('.natural-eye .eye-shutter');
+    if (eyes.length === 0) return;
+
+    eyes.forEach(eye => {
+        // Get center of eye
+        const rect = eye.getBoundingClientRect();
+        const eyeX = rect.left + (rect.width / 2);
+        const eyeY = rect.top + (rect.height / 2);
+
+        // Calculate angle
+        const angleRad = Math.atan2(e.clientY - eyeY, e.clientX - eyeX);
+        const angleDeg = angleRad * (180 / Math.PI);
+
+        // Rotate
+        eye.style.transform = `rotate(${angleDeg}deg)`;
+    });
+});
